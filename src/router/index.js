@@ -1,27 +1,63 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import DiscoverMusic from '../views/DiscoverMusic.vue'
+import RecommendedMusic from '../views/RecommendedMusic.vue'
+import LatestMusic from '../views/LatestMusic.vue'
+import LatestMV from '../views/LatestMV.vue'
+import Search from '../views/Search.vue'
+import Playlist from '../views/Playlist.vue'
+import MV from '../views/MV.vue'
 
 Vue.use(VueRouter)
 
-  const routes = [
+const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: 'DiscoverMusic',
+    component: DiscoverMusic
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/recommended',
+    name: 'RecommendedMusic',
+    component: RecommendedMusic
+  },
+  {
+    path: '/latestmusic',
+    name: 'LatestMusic',
+    component: LatestMusic
+  },
+  {
+    path: '/latestMV',
+    name: 'LatestMV',
+    component: LatestMV
+  },
+  {
+    path: '/search',
+    name: 'Search',
+    component: Search
+  },
+  {
+    path: '/playlist',
+    name: 'Playlist',
+    component: Playlist
+  },
+  {
+    path: '/mv',
+    name: 'MV',
+    component: MV
   }
 ]
 
 const router = new VueRouter({
-  routes
+  routes,
+  linkActiveClass: 'active',
+  mode: "history",
+  scrollBehavior() {
+    return {
+      x: 0,
+      y: 0
+    }
+  }
 })
 
 export default router
